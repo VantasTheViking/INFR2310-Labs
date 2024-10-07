@@ -16,6 +16,7 @@ public class PathController : MonoBehaviour
     public Animator animator;
     bool isWalking;
 
+    [SerializeField] bool colliding;
     // Start is called before the first frame update
     void Start()
     {
@@ -74,5 +75,16 @@ public class PathController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         target = pathManager.GetNextTarget();
+        
+        if (colliding)
+        {
+            isWalking = false;
+            animator.SetBool("isWalking", isWalking);
+
+        }
     }
+
+   
+    
+
 }
